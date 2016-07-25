@@ -1,8 +1,8 @@
 class FuelStationService
 
   def initialize
-    @_connection = Faraday.new("developer.nrel.gov/api/alt-fuel-stations/v1")
-    @_connection.headers["X-Api-Key"] = "k7ZS4PUREkVof8OUUoK6plWpyIaVPuRkPFyCG2aa"
+    @_connection = Faraday.new("http://developer.nrel.gov/api/alt-fuel-stations/v1")
+    @_connection.headers["X-Api-Key"] = ENV["nrel_api_key"]
   end
 
   def search_stations(zip_code)
@@ -10,7 +10,9 @@ class FuelStationService
     parse(response)
   end
 
-
+  def parse(response)
+    JSON.parse(response.body)
+  end
 
   private
     def connection
