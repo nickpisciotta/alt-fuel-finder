@@ -6,9 +6,14 @@ RSpec.feature "Search fuel station by zip code" do
 
     expect(page.status_code).to eq (200)
 
-    fill_in "Zip Code", with: '80203'
+    fill_in "zip_code_search", with: '80203'
 
     click_on "Locate"
 
-  end 
+    expect(current_path).to eq(search_path)
+
+    expect(page).to have_content("Search Results")
+    # expect(page).to have_content("Search Results")
+    # expect(page).to have_content("Search Results")
+  end
 end
