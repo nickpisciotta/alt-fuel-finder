@@ -1,0 +1,7 @@
+<h2>Search for Fuel Stations by Zip Code:</h2>
+
+<%= form_tag("/search", method: "get") do  %>
+  <%= label_tag ( :search_params, "Zip Code") %>
+  <%= text_field_tag(:search_params) %>
+  <%= submit_tag("Locate") %>
+<% end %>
